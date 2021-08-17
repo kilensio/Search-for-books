@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Fragment } from 'react'
 import { useActions } from '../hooks/useActions'
 import Search from './Search'
@@ -20,17 +20,12 @@ const sortsOpt = ["Relevance", "Newest"].map(sort => {
 })
 
 const SearchGroup: React.FC = () => {
-  // const [category, setCategory] = useState<string>(categoriesOpt[0].value)
-  // const [sort, setSort] = useState<string>(sortsOpt[0].value)
-
-  // const SearchDecoratorHandler = (text: string) => {
-
-  // }
   const { setSearchCategory, setSearchSort } = useActions()
 
   useEffect(() => {
     setSearchCategory(categoriesOpt[0].value)
     setSearchSort(sortsOpt[0].value)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 

@@ -5,10 +5,8 @@ import { BooksAction, BooksActionTypes, SearchSettings } from "../../types/books
 const googleBooksAPI = 'https://www.googleapis.com/books/v1/volumes'
 const googleBooksAPIKey = process.env.REACT_APP_GOOGLE_APIKEY
 
-
 export const fetchBooks = (settings: SearchSettings, page: number = 0) => async (dispatch: Dispatch<BooksAction>) => {
   try {
-    console.log('Fetch started', page, settings);
     if (!page) {
       dispatch({ type: BooksActionTypes.CLEAR_BOOKS })
     }
@@ -25,10 +23,7 @@ export const fetchBooks = (settings: SearchSettings, page: number = 0) => async 
         maxResults: settings.limit,
         key: googleBooksAPIKey  
       }
-      //https://www.googleapis.com/books/v1/volumes?q=flowers&startIndex=1&maxResults=10
     })
-    
-    // setTimeout(() => {
     
     if (response.data.hasOwnProperty('items'))
       dispatch({ type: BooksActionTypes.FETCH_BOOKS_SUCCESS, payload: response.data })
@@ -36,12 +31,10 @@ export const fetchBooks = (settings: SearchSettings, page: number = 0) => async 
       if (response.data.totalItems < (page + 1) * settings.limit) {      
       dispatch({ type: BooksActionTypes.FETCH_BOOKS_ALL_LOADED})
     }
-
-    // }, 5000)
   } catch (error) {
     dispatch({
       type: BooksActionTypes.FETCH_BOOKS_ERROR,
-      payload: 'Ошибка при загрузке книг.'
+      payload: 'An error occurred during the search'
     })
   }
 }

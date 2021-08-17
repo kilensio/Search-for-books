@@ -1,20 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 interface BooksProps {
+  id: string,
   img?: string, 
   title?: string, 
-  author?: string, 
+  authors?: string[], 
   category?: string
 }
 
-const BooksItem: React.FC<BooksProps> = ({ img = '', title = '', author = '', category = '' }) => {
+const BooksItem: React.FC<BooksProps> = ({ id, img = '', title = '', authors = [], category = '' }) => {
+  
   return (
-    <div className="card">
+    <Link 
+      to={`/${id}`} 
+      className="card"
+    >
       <img src={img} alt="" />
-      <p>{author}</p>
+      <p>{authors.join(', ')}</p>
       <h3>{title}</h3>
       <span>{category}</span>
-    </div>
+    </Link>
   )
 }
 

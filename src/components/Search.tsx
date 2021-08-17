@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useActions } from '../hooks/useActions'
 
 const Search: React.FC = () => {
   const { setSearchText } = useActions()
+  const history = useHistory()
 
   const [text, setText] = useState<string>('')
 
@@ -11,6 +13,7 @@ const Search: React.FC = () => {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    history.push('/')
     setSearchText(text)
   }
 

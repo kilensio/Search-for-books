@@ -18,6 +18,11 @@ body {
   background-color: var(--main-bg-color);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 main {
   display: block;
 }
@@ -152,6 +157,8 @@ header select:focus-visible {
 }
 
 .card {
+  display: block;
+  text-decoration: none;
   margin: 1rem;
   padding: 1.3rem 1rem 2.4rem;
   background-color: #fff;
@@ -191,6 +198,15 @@ header select:focus-visible {
   color: grey;
 }
 
+.card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 0.8rem;
+}
+
 .card span {
   position: absolute;
   right: 1rem;
@@ -215,10 +231,15 @@ header select:focus-visible {
   color: var(--nav-bg-color)
 }
 
+.book__info {
+  /* display: flex; */
+}
+
 .book__img {
   /* display: inline-block; */
   float: left;
   margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .book img {
@@ -226,11 +247,11 @@ header select:focus-visible {
   /* margin: 0 auto; */
   box-shadow: 3px 2px 15px 1px var(--light-grey);
   object-fit: contain;
-  max-height: 40rem;
+  height: 20rem;
 }
 
 .book h2 {
-  margin-top: 10rem;
+  margin-top: 9rem;
   margin-bottom: 0.5rem;
   color: #000;
 }
@@ -245,7 +266,10 @@ header select:focus-visible {
 }
 
 .book__descr {
-  vertical-align: bottom;
+  /* margin-top: 2rem; */
+  /* vertical-align: bottom; */
+  text-indent: 3rem;
+  clear: both;
 }
 
 button.more {

@@ -34,7 +34,7 @@ export const booksReducer = (state = initialState, action: BooksAction): BooksSt
               etag: item.etag,
               imgUrl: vi.imageLinks?.thumbnail || '',
               title: vi.title,
-              author: vi.authors ? vi.authors[0] : 'Not specified',
+              authors: vi.authors ? vi.authors : [],
               category: vi.categories ? vi.categories[0] : 'Not specified'
         }}): [])]}
     case BooksActionTypes.FETCH_BOOKS_ALL_LOADED:

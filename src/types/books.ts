@@ -2,7 +2,7 @@ export interface IBooksItem {
   id: string
   etag: string
   title: string
-  author?: string
+  authors?: string[]
   imgUrl?: string
   category?: string
 }

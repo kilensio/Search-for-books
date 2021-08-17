@@ -1,5 +1,9 @@
-import * as BookActionCreators from './books'
+import * as BooksActionCreators from './books'
+import * as DetailsActionCreators from './details'
 
-export default {
-  ...BookActionCreators
+const ActionCreators = {
+  ...BooksActionCreators,
+  ...DetailsActionCreators
 }
+
+export default ActionCreators
