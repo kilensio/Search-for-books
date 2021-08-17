@@ -1,13 +1,398 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap');
+
+:root {
+  --nav-bg-color: #333;
+  --main-bg-color: hsl(42, 50%, 96%);
+  --card-bd-color: hsl(42, 50%, 90%);
+  --light-grey: hsl(0, 0%, 83%);
+  --nav-light: #eee;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  min-width: 320px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: var(--main-bg-color);
+}
+
+main {
+  display: block;
+}
+
+input, button, select {
+  border: none;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;  
+  list-style: none;
+}
+
+h1 {
+  margin: 0;
+  margin-right: 1rem;
+  color: var(--nav-light);
+  font-size: 2rem;
+}
+
+h1 i {
+  margin-right: 0.5rem;
+}
+
+header {
+  margin: 0;
+  padding: 1.2rem 1rem;
+  background-color: var(--nav-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header input,
+header select {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-size: 1rem;
+  height: 2.3rem;
+}
+
+header input:focus-visible,
+header select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 1px 2px hsl(180, 91%, 78%);
+}
+
+.search {
+  flex-grow: 0.7;
+  max-width: 30rem;
+  min-width: 15rem;
+  position: relative;
+}
+
+.search input {
+  display: block;
+  width: 100%;
+}
+
+.search button {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  height: 2.3rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 3px 3px 0;
+  font-size: 1.2rem;
+  color: var(--nav-bg-color);
+  background-color: var(--light-grey);
+}
+
+.search button:active i {
+  transform: scale(0.95);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.select-group {
+  color: var(--nav-light);
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 0.1;
+}
+
+.select {
+  display: inline-block;
+}
+
+
+.select label {
+  margin-right: 0.5rem;
+}
+
+.select select {  
+  color: #444;
+}
+
+.results {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: right;
+}
+
+.results p {
+  margin: 0;
+  color: hsl(42, 20%, 60%);
+}
+
+.cards {
+  margin: 0 -1rem 0;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 0 2rem;
+}
+
+.card-list__item {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.card {
+  margin: 1rem;
+  padding: 1.3rem 1rem 2.4rem;
+  background-color: #fff;
+  border: 1px solid var(--card-bd-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: calc(100% - 6rem);
+}
+
+.card img {
+  display: block;
+  margin: 0 auto 1.5rem;
+  height: 12rem;
+  box-shadow: 2px 1px 10px var(--light-grey);
+  object-fit: contain;
+  object-position: bottom center;
+  max-width: 100%;
+}
+
+.card h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--nav-bg-color);
+}
+
+.card p,
+.card span {
+  margin: 0;
+  font-size: 0.9rem;
+  color: grey;
+}
+
+.card span {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
+  font-style: italic;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100% - 2rem);
+}
+
+.book {
+  /* display: flex; */
+  margin: 1rem 0;
+  padding: 2rem 3rem;
+  background-color: #fff;
+  border: 1px solid var(--card-bd-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.2rem;
+  color: var(--nav-bg-color)
+}
+
+.book__img {
+  /* display: inline-block; */
+  float: left;
+  margin-right: 2rem;
+}
+
+.book img {
+  display: block;
+  /* margin: 0 auto; */
+  box-shadow: 3px 2px 15px 1px var(--light-grey);
+  object-fit: contain;
+  max-height: 40rem;
+}
+
+.book h2 {
+  margin-top: 10rem;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.book__author {
+  margin: 0;
+  color: grey;
+}
+
+.book span {
+  font-style: italic;
+}
+
+.book__descr {
+  vertical-align: bottom;
+}
+
+button.more {
+  height: 2.3rem;
+  padding: 0 2rem;
+  margin: 2rem auto 5rem;
+  display: block;
+  background-color: transparent;
+  color: var(--nav-bg-color);
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 2px solid var(--light-grey);
+}
+
+button.more:hover {
+  background-color: var(--light-grey);
+}
+
+button.more:active {
+  transform: scale(0.97);
+}
+
+.info {
+  margin: 1rem;
+  padding: 5rem 10% 7rem;
+  background-color: #fff;
+  border: 1px solid var(--card-bd-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: calc(100% - 6rem);
+  width: fit-content;
+  margin: 150px auto;
+  text-align: center;
+  color: var(--nav-bg-color);
+}
+
+.info i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.info h2 {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-list__item {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+
+@media (max-width: 972px) {
+  .card-list__item {
+    flex-basis: 33%;
+    max-width: 33%;
+  }
+
+  .select-group {
+    flex-direction: column;
+  }
+
+  .select {
+    text-align: end;
+  }
+
+  .select + .select {
+    margin-top: 5px;
+  }
+
+  .select label {
+    font-size: 0.9rem;
+  }
+
+  .select select {
+    height: 1.5rem;
+    width: 8rem;
+    padding: 0 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    position: relative;
+    padding-top: 4rem;
+  }
+
+  header h1 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 1rem;
+  }
+
+  .card-list__item {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+  }
+  
+  .search {
+    width: 100%;
+    max-width: unset;
+  }
+  
+  .select-group {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+  
+  .select select {
+    height: 2rem;
+  }
+  
+  .select + .select {
+    margin-top: unset;
+    margin-left: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-width: unset;
+  }
+  .card-list__item {
+    flex-basis: fill;
+    width: calc(100% - 2rem);
+    max-width: 320px;
+    margin: 0 auto;
+  }
 }
