@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 const Spinner: React.FC = () => (
   <Fragment>
     <svg
-      style={{margin: '-2rem auto 0', background: 'none', display: 'block', shapeRendering: 'auto'}}
+      style={{margin: '2rem auto 0', background: 'none', display: 'block', shapeRendering: 'auto'}}
       width="150px"
       height="150px"
       viewBox="0 0 100 100"
