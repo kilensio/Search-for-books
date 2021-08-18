@@ -374,6 +374,19 @@ button.more:active {
     flex-basis: 50%;
     max-width: 50%;
   }
+
+  .book h2 {
+    font-size: 1.5rem;
+  }
+
+  .book p {
+    font-size: 1.1rem;
+  }
+
+  .book img {
+    width: 10rem;
+    height: fit-content;
+  }
 }
 
 @media (max-width: 640px) {
@@ -404,6 +417,19 @@ button.more:active {
 
   .container {
     padding: 0 1rem;
+  }
+
+  .book__img {
+    /* float: none; */
+  }
+
+  .book h2 {
+    clear: both;
+    margin-top: 2rem;
+  }
+
+  .book__descr {
+    text-indent: unset;
   }
 }
 
