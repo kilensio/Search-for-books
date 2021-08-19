@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import Details from './components/Details';
 import Navbar from './components/Navbar';
 import BooksPage from './pages/BooksPage';
-import NotFound from './pages/NotFound';
 
 const App: React.FC = () => {
   return (
@@ -15,11 +14,11 @@ const App: React.FC = () => {
             <Route path={'/'} exact>
               <BooksPage />
             </Route>
-            <Route path={'/:id'} exact>
+            <Route path={'/book/:id'} exact>
               <Details />
             </Route>
             <Route>
-              <NotFound />
+              <Redirect to='/' />
             </Route>
           </Switch>
         </div>

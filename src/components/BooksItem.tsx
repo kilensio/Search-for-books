@@ -13,7 +13,7 @@ const BooksItem: React.FC<BooksProps> = ({ id, img = '', title = '', authors = [
   
   return (
     <Link 
-      to={`/${id}`} 
+      to={`/book/${id}`} 
       className="card"
     >
       <img src={img} alt="" />

@@ -20,7 +20,7 @@ export const fetchBookDetails = (id: string) => async (dispatch: Dispatch<Detail
   } catch (error) {
     dispatch({
       type: DetailsActionTypes.FETCH_BOOK_ERROR,
-      payload: 'The book is not found'
+      payload: 'The book not found'
     })
   }
 }
