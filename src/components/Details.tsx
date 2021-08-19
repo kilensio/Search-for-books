@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import Info from './Info'
-import Spinner from './Spinner'
+import Info from './layout/Info'
+import Spinner from './layout/Spinner'
 
 interface DetailsParams {
   id: string

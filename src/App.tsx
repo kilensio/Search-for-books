@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import Details from './components/Details';
-import Navbar from './components/Navbar';
+import Navbar from './components/layout/Navbar';
 import BooksPage from './pages/BooksPage';
 
 const App: React.FC = () => {

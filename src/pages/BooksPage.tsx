@@ -5,7 +5,7 @@ import StartPage from './StartPage'
 import ErrorPage from './ErrorPage'
 import NoBooksPage from './NoBooksPage'
 import Books from '../components/Books'
-import Spinner from '../components/Spinner'
+import Spinner from '../components/layout/Spinner'
 
 const BooksPage: React.FC = () => {
   const { books, total, page, loading, error, allLoaded} = useTypedSelector(state => state.books)

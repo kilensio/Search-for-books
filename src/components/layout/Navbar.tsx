@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SearchGroup from './SearchGroup'
+import SearchGroup from '../SearchGroup'
 
 const Navbar: React.FC = () => {
   return (
