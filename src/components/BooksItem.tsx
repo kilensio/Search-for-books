@@ -9,8 +9,7 @@ interface BooksProps {
   category?: string
 }
 
-const BooksItem: React.FC<BooksProps> = ({ id, img = '', title = '', authors = [], category = '' }) => {
-  
+const BooksItem: React.FC<BooksProps> = React.memo(({ id, img = '', title = '', authors = [], category = '' }) => {
   return (
     <Link 
       to={`/book/${id}`} 
@@ -22,6 +21,6 @@ const BooksItem: React.FC<BooksProps> = ({ id, img = '', title = '', authors = [
       <span>{category}</span>
     </Link>
   )
-}
+})
 
 export default BooksItem

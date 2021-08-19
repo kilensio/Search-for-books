@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Fragment } from 'react'
 import { useActions } from '../hooks/useActions'
 import Search from './Search'
-import Select from './Select'
+import Select from './layout/Select'
 
 const categoriesOpt = [
   "All", "Art", "Biography", "Computers", "History", "Medical", "Poetry"
