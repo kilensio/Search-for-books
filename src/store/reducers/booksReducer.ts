@@ -6,12 +6,6 @@ const initialState: BooksState = {
   loading: false,
   allLoaded: false,
   error: null,
-  settings: {
-    text: '',
-    category: '',
-    sort: '',
-    limit: 30
-  },
   page: 0
 }
 
@@ -43,12 +37,6 @@ export const booksReducer = (state = initialState, action: BooksAction): BooksSt
       return {...state, loading: false, error: action.payload}
     case BooksActionTypes.CLEAR_BOOKS:
       return {...state, page: 0, allLoaded: false, books: []}
-    case BooksActionTypes.SET_SEARCH_TEXT:
-      return {...state, page: 0, settings: {...state.settings, text: action.payload}}
-    case BooksActionTypes.SET_SEARCH_CATEGORY:
-      return {...state, page: 0, settings: {...state.settings, category: action.payload}}
-    case BooksActionTypes.SET_SEARCH_SORT:
-      return {...state, page: 0, settings: {...state.settings, sort: action.payload}}
     default:
       return state
   }

@@ -23,14 +23,6 @@ export interface IBooksResponse {
   }[]
 }
 
-
-export interface SearchSettings {
-  text: string
-  category: string
-  sort: string
-  limit: number
-}
-
 export interface BooksState {
   books: IBooksItem[]
   total: number
@@ -38,7 +30,6 @@ export interface BooksState {
   allLoaded: boolean
   error: null | string
   page: number
-  settings: SearchSettings
 }
 
 export enum BooksActionTypes {
@@ -48,9 +39,6 @@ export enum BooksActionTypes {
   FETCH_BOOKS_ERROR = 'FETCH_BOOKS_ERROR',
   CLEAR_BOOKS = 'CLEAR_BOOKS',
   LOAD_MORE = 'LOAD_MORE',
-  SET_SEARCH_TEXT = 'SET_SEARCH_TEXT',
-  SET_SEARCH_CATEGORY = 'SET_SEARCH_CATEGORY',
-  SET_SEARCH_SORT = 'SET_SEARCH_SORT'
 }
 
 interface FetchBooksAction {
@@ -80,20 +68,6 @@ interface LoadMoreAction {
   payload: number
 }
 
-interface SetSearchText {
-  type: BooksActionTypes.SET_SEARCH_TEXT
-  payload: string
-}
-
-interface SetSearchCategory {
-  type: BooksActionTypes.SET_SEARCH_CATEGORY
-  payload: string
-}
-
-interface SetSearchSort {
-  type: BooksActionTypes.SET_SEARCH_SORT
-  payload: string
-}
 
 export type BooksAction =
   | FetchBooksAction
@@ -102,6 +76,3 @@ export type BooksAction =
   | FetchBooksErrorAction
   | ClearBooksAction
   | LoadMoreAction
-  | SetSearchText
-  | SetSearchCategory
-  | SetSearchSort

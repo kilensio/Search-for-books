@@ -1,9 +1,11 @@
 import * as BooksActionCreators from './books'
 import * as DetailsActionCreators from './details'
+import * as SearchActionCreators from './search'
 
 const ActionCreators = {
   ...BooksActionCreators,
-  ...DetailsActionCreators
+  ...DetailsActionCreators,
+  ...SearchActionCreators
 }
 
 export default ActionCreators

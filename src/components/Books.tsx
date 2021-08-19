@@ -7,16 +7,19 @@ import Spinner from './Spinner'
 
 
 const Books: React.FC = () => {
-  const { books, total, page, loading, error, allLoaded, settings } = useTypedSelector(state => state.books)
-  const { fetchBooks } = useActions()
+  const { books, total, page, loading, error, allLoaded} = useTypedSelector(state => state.books)
+  const { text, category, sort } = useTypedSelector(state => state.search)
+  const { fetchBooks, clearBooks } = useActions()
 
   useEffect(() => {
-    if (settings.text) {
-      if (!loading)
-        fetchBooks(settings, 0)
+    if (text) {
+      if (!loading) {
+        clearBooks()
+        fetchBooks(text, category, sort, page)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings])
+  }, [text, category, sort])
 
   if (error)
     return (
@@ -25,7 +28,7 @@ const Books: React.FC = () => {
       </Info>
     )
 
-  if (settings.text === '')
+  if (text === '')
     return (
       <Info title="Welcome to Search for books!">
         <p>This app using Google API for books searching.</p>
@@ -36,7 +39,7 @@ const Books: React.FC = () => {
   if (!loading && books.length === 0)
     return (
       <Info title="Books not found">
-        <p>Books for "{settings.text}" in "{settings.category}" category are not found</p>
+        <p>Books for "{text}" in "{category}" category are not found</p>
       </Info>
     )
   
@@ -57,7 +60,7 @@ const Books: React.FC = () => {
       {
         loading ? <Spinner /> : 
           !allLoaded && <button 
-            onClick={() => fetchBooks(settings, page)} 
+            onClick={() => fetchBooks(text, category, sort, page)} 
             className="more">
               Load more
           </button>
