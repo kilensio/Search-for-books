@@ -35,7 +35,7 @@ const Details: React.FC = () => {
         <div className="book__img">
           {imgUrl !== '' && <img src={imgUrl} alt="" />}
         </div>
-        <span>{categories.join(', ')}</span>
+        {categories.length > 0 && <span>{categories.join(', ')}</span>}
         <div className="book__title">
           <h2>{title}</h2>
           <p className="book__author">{authors.join(', ')}</p>

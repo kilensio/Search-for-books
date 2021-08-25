@@ -260,8 +260,11 @@ header select:focus-visible {
   height: 20rem;
 }
 
-.book h2 {
+span + .book__title {
   margin-top: 9rem;
+}
+
+.book h2 {
   margin-bottom: 0.5rem;
   color: #000;
 }
