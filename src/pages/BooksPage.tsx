@@ -13,16 +13,6 @@ const BooksPage: React.FC = () => {
   const {text, category} = searchSettings
   const { fetchBooks } = useActions()
 
-  // useEffect(() => {
-    // if (searchSettings.text) {
-    //   fetchBooks(searchSettings, 0, books)
-    // }
-    // console.log('searchSettings changed');
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [searchSettings])
-
-
   useEffect(() => {
     window.addEventListener('onSearch', handlerSearch)
     return () => {
@@ -33,9 +23,7 @@ const BooksPage: React.FC = () => {
   const handlerSearch = () => {
     if (searchSettings.text) {
       fetchBooks(searchSettings, 0, books)
-    }
-    console.log('handlerSearch', searchSettings);
-    
+    }    
   }
 
   if (error)

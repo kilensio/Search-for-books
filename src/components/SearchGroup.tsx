@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { useActions } from '../hooks/useActions'
 import Search from './Search'
 import Select from './layout/Select'
+import { useHistory } from 'react-router-dom'
 
 const categoriesOpt = [
   "All", "Art", "Biography", "Computers", "History", "Medical", "Poetry"
@@ -21,6 +22,7 @@ const sortsOpt = ["Relevance", "Newest"].map(sort => {
 
 const SearchGroup: React.FC = () => {
   const { setSearchCategory, setSearchSort } = useActions()
+  const history = useHistory()
 
   useEffect(() => {
     setSearchCategory(categoriesOpt[0].value)
@@ -29,6 +31,7 @@ const SearchGroup: React.FC = () => {
 
   const changeHandler = (text: string, handler: ((text: string) => void)) => {
     handler(text)
+    history.push('/')
     setTimeout(() => {
       const event = new CustomEvent('onSearch')
       window.dispatchEvent(event)
