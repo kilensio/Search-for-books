@@ -20,7 +20,7 @@ const sortsOpt = ["Relevance", "Newest"].map(sort => {
 })
 
 const SearchGroup: React.FC = () => {
-  const { setSearchCategory, setSearchSort } = useActions()
+  const { setSearchCategory, setSearchSort, clearBooks } = useActions()
 
   useEffect(() => {
     setSearchCategory(categoriesOpt[0].value)
@@ -28,17 +28,21 @@ const SearchGroup: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const changeHandler = (text: string, handler: ((text: string) => void)) => {
+    handler(text)
+    clearBooks()
+  }
 
   return (
     <Fragment>
-      <Search />
+      <Search onSubmit={changeHandler} />
 
       <div className="select-group">
         <div className="select">
           <label>Category</label>
           <Select
             values={categoriesOpt}
-            onChange={setSearchCategory}
+            onChange={text => changeHandler(text, setSearchCategory)}
           />
         </div>
 
@@ -46,7 +50,7 @@ const SearchGroup: React.FC = () => {
           <label>Sorting by</label>
           <Select 
             values={sortsOpt}
-            onChange={setSearchSort}
+            onChange={text => changeHandler(text, setSearchSort)}
           />
         </div>
       </div>

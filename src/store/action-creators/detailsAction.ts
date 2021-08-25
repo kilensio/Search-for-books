@@ -3,7 +3,7 @@ import { Dispatch } from "react";
 import { DetailsAction, DetailsActionTypes, IDetailsResponse } from "../../types/details";
 
 const googleBooksAPI = 'https://www.googleapis.com/books/v1/volumes'
-const googleBooksAPIKey = process.env.REACT_APP_GOOGLE_APIKEY
+// const googleBooksAPIKey = process.env.REACT_APP_GOOGLE_APIKEY
 
 export const fetchBookDetails = (id: string) => async (dispatch: Dispatch<DetailsAction>) => {
   try {
@@ -11,7 +11,7 @@ export const fetchBookDetails = (id: string) => async (dispatch: Dispatch<Detail
 
     const response = await axios.get<IDetailsResponse>(googleBooksAPI + '/' + id, {
       params: {
-        key: googleBooksAPIKey  
+        // key: googleBooksAPIKey  
       }
     })
 

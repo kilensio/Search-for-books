@@ -5,20 +5,20 @@ import StartPage from './StartPage'
 import ErrorPage from './ErrorPage'
 import NoBooksPage from './NoBooksPage'
 import Books from '../components/Books'
-import Spinner from '../components/layout/Spinner'
+import Indicator from '../components/layout/Indicator'
 
 const BooksPage: React.FC = () => {
-  const { books, total, page, loading, error, allLoaded} = useTypedSelector(state => state.books)
-  const { text, category, sort } = useTypedSelector(state => state.search)
-  const { fetchBooks, clearBooks } = useActions()
+  const { books, total, page, loading, loaded, error, allLoaded} = useTypedSelector(state => state.books)
+  const searchSettings = useTypedSelector(state => state.search)
+  const {text, category} = searchSettings
+  const { fetchBooks } = useActions()
 
   useEffect(() => {
-    if (text) {
-      clearBooks()
-      fetchBooks(text, category, sort, 0)
+    if (searchSettings.text) {
+      fetchBooks(searchSettings, 0, books)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text, category, sort])
+  }, [searchSettings])
 
   if (error)
     return <ErrorPage error={error} />
@@ -31,16 +31,16 @@ const BooksPage: React.FC = () => {
   
   return (
     <div className="cards">
-      {books.length !== 0 && !loading &&
+      {books.length !== 0 &&
         <div className="results">
           <p>Results: {total}</p>
         </div>
       }
-      <Books books={books} />      
+      <Books books={books} />
+      {loading && <Indicator percent={loaded} />}
       
-      {loading ? <Spinner /> : 
-        !allLoaded && <button 
-          onClick={() => fetchBooks(text, category, sort, page)} 
+      {!loading && !allLoaded && <button 
+          onClick={() => fetchBooks(searchSettings, page, books)} 
           className="more">
             Load more
         </button>

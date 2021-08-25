@@ -1,6 +1,6 @@
-import * as BooksActionCreators from './books'
-import * as DetailsActionCreators from './details'
-import * as SearchActionCreators from './search'
+import * as BooksActionCreators from './booksAction'
+import * as DetailsActionCreators from './detailsAction'
+import * as SearchActionCreators from './searchAction'
 
 const ActionCreators = {
   ...BooksActionCreators,

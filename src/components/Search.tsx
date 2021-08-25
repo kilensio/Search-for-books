@@ -1,24 +1,25 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useActions } from '../hooks/useActions'
 
-const Search: React.FC = () => {
+interface SearchProps {
+  onSubmit: (text: string, handler: (text: string) => void) => void
+}
+
+const Search: React.FC<SearchProps> = ({ onSubmit }) => {
   const { setSearchText } = useActions()
-  const history = useHistory()
 
   const [text, setText] = useState<string>('')
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => 
     setText(e.target.value)
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    history.push('/')
-    setSearchText(text)
+    onSubmit(text, setSearchText)
   }
 
   return (
-    <form onSubmit={onSubmit} className="search">
+    <form onSubmit={submitHandler} className="search">
       <input 
         type="text" 
         className="search__input" 
