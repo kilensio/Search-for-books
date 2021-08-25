@@ -4,7 +4,7 @@ import { BooksAction, BooksActionTypes, IBooksItem, IBooksResponse, IBooksRespon
 import { SearchState } from "../../types/search";
 
 const googleBooksAPI = 'https://www.googleapis.com/books/v1/volumes'
-// const googleBooksAPIKey = process.env.REACT_APP_GOOGLE_APIKEY
+const googleBooksAPIKey = process.env.REACT_APP_GOOGLE_APIKEY
 
 const fetch = async ({ text, category, sort }: SearchState, startNumber: number, maxResults: number): Promise<AxiosResponse<any>> => {
   const searchParams: string = category === 'All' ? text.toLowerCase() :
@@ -16,7 +16,7 @@ const fetch = async ({ text, category, sort }: SearchState, startNumber: number,
       orderBy: sort.toLowerCase(),
       startIndex: startNumber, 
       maxResults: maxResults,
-      // key: googleBooksAPIKey
+      key: googleBooksAPIKey
     }
   })
 
@@ -82,7 +82,7 @@ async function* generateMacroFetch(searchSettings: SearchState, page: number, pr
 }
 
 export const fetchBooks = (searchSettings: SearchState, page: number = 0, prevBooks: IBooksItem[]) => async (dispatch: Dispatch<BooksAction>) => {
-  if (page === 0) clearBooks()
+  if (page === 0) dispatch({ type: BooksActionTypes.CLEAR_BOOKS })
   try {
     dispatch({ type: BooksActionTypes.FETCH_BOOKS })
     

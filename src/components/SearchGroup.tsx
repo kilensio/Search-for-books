@@ -20,17 +20,19 @@ const sortsOpt = ["Relevance", "Newest"].map(sort => {
 })
 
 const SearchGroup: React.FC = () => {
-  const { setSearchCategory, setSearchSort, clearBooks } = useActions()
+  const { setSearchCategory, setSearchSort } = useActions()
 
   useEffect(() => {
     setSearchCategory(categoriesOpt[0].value)
     setSearchSort(sortsOpt[0].value)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  })
 
   const changeHandler = (text: string, handler: ((text: string) => void)) => {
     handler(text)
-    clearBooks()
+    setTimeout(() => {
+      const event = new CustomEvent('onSearch')
+      window.dispatchEvent(event)
+    })
   }
 
   return (
